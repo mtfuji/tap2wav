@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <io.h>
+#include <sys/uio.h>
 
 struct WAB_CNK {
 	unsigned char name[4];
