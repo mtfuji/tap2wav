@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <sys/uio.h>
 
 struct WAB_CNK {
@@ -48,7 +49,7 @@ short tap2wav(const char *tap_name,const char *wav_name)
 
 	//-----
 
-	memcpy(WCNK.name,"RIFF");
+	memcpy(WCNK.name,"RIFF",4);
 	// ファイル全体のサイズ−８
 	WCNK.size=(flng-4l)*8l;
 	WCNK.size+=46l-8l;
@@ -58,7 +59,7 @@ short tap2wav(const char *tap_name,const char *wav_name)
 
 	//-----
 
-	memcpy(WCNK.name,"fmt ");
+	memcpy(WCNK.name,"fmt ",4);
 	WCNK.size=sizeof(struct WAB_FMT);
 	fwrite(&WCNK,1,8,des);
 
@@ -73,7 +74,7 @@ short tap2wav(const char *tap_name,const char *wav_name)
 
 	//-----
 
-	memcpy(WCNK.name,"data");
+	memcpy(WCNK.name,"data",4);
 	WCNK.size=(flng-4l)*8l; // dataのサイズは必ず偶数
 	fwrite(&WCNK,1,8,des);
 

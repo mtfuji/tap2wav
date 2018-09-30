@@ -1,13 +1,4 @@
-TAP2WAV.C:46:7: error: use of undeclared identifier 'filelength'
+TAP2WAV.C:47:7: error: use of undeclared identifier 'filelength'
         flng=filelength(fileno(src));
              ^
-TAP2WAV.C:51:2: error: use of undeclared identifier 'memcpy'
-        memcpy(WCNK.name,"RIFF");
-        ^
-TAP2WAV.C:61:2: error: use of undeclared identifier 'memcpy'
-        memcpy(WCNK.name,"fmt ");
-        ^
-TAP2WAV.C:76:2: error: use of undeclared identifier 'memcpy'
-        memcpy(WCNK.name,"data");
-        ^
-4 errors generated.
+1 error generated.
