@@ -20,7 +20,7 @@ struct WAB_FMT {
 unsigned char TMP0[0x1000];
 unsigned char TMP1[0x4000];
 
-short tap2wav(unsigned char *tap_name,unsigned char *wav_name)
+short tap2wav(const char *tap_name,const char *wav_name)
 {
 	unsigned long flng,freq;
 	unsigned short siz,lng;
@@ -101,10 +101,10 @@ short tap2wav(unsigned char *tap_name,unsigned char *wav_name)
 	return err;
 }
 
-void main(int argc,unsigned char *argv[])
+void main(int argc,char *argv[])
 {
-	unsigned char *src;
-	unsigned char *des;
+	const char *src;
+	const char *des;
 	short i,err;
 
 	err=0; src=des=NULL;
