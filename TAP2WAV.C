@@ -101,7 +101,7 @@ short tap2wav(const char *tap_name,const char *wav_name)
 	return err;
 }
 
-void main(int argc,char *argv[])
+int main(int argc,char *argv[])
 {
 	const char *src;
 	const char *des;
@@ -127,5 +127,3 @@ void main(int argc,char *argv[])
 	if(tap2wav(src,des)) printf("Error!\n");
 	else                 printf("Ok.\n");
 }
-
-

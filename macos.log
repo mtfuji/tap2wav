@@ -10,11 +10,4 @@ TAP2WAV.C:61:2: error: use of undeclared identifier 'memcpy'
 TAP2WAV.C:76:2: error: use of undeclared identifier 'memcpy'
         memcpy(WCNK.name,"data");
         ^
-TAP2WAV.C:104:1: error: 'main' must return 'int'
-void main(int argc,char *argv[])
-^~~~
-int
-TAP2WAV.C:131:1: error: expected unqualified-id
-<U+001A>
-^
-6 errors generated.
+4 errors generated.
