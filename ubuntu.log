@@ -1,0 +1,45 @@
+TAP2WAV.C:131:1: error: stray ‘\32’ in program
+ 
+ ^
+TAP2WAV.C: In function ‘short int tap2wav(unsigned char*, unsigned char*)’:
+TAP2WAV.C:35:25: error: invalid conversion from ‘unsigned char*’ to ‘const char*’ [-fpermissive]
+  src=fopen(tap_name,"rb");
+                         ^
+In file included from TAP2WAV.C:1:0:
+/usr/include/stdio.h:272:14: note:   initializing argument 1 of ‘FILE* fopen(const char*, const char*)’
+ extern FILE *fopen (const char *__restrict __filename,
+              ^
+TAP2WAV.C:36:25: error: invalid conversion from ‘unsigned char*’ to ‘const char*’ [-fpermissive]
+  des=fopen(wav_name,"wb");
+                         ^
+In file included from TAP2WAV.C:1:0:
+/usr/include/stdio.h:272:14: note:   initializing argument 1 of ‘FILE* fopen(const char*, const char*)’
+ extern FILE *fopen (const char *__restrict __filename,
+              ^
+TAP2WAV.C:40:18: error: invalid conversion from ‘unsigned char*’ to ‘const char*’ [-fpermissive]
+   remove(wav_name);
+                  ^
+In file included from TAP2WAV.C:1:0:
+/usr/include/stdio.h:178:12: note:   initializing argument 1 of ‘int remove(const char*)’
+ extern int remove (const char *__filename) __THROW;
+            ^
+TAP2WAV.C:46:29: error: ‘filelength’ was not declared in this scope
+  flng=filelength(fileno(src));
+                             ^
+TAP2WAV.C:51:25: error: ‘memcpy’ was not declared in this scope
+  memcpy(WCNK.name,"RIFF");
+                         ^
+TAP2WAV.C:99:25: error: invalid conversion from ‘unsigned char*’ to ‘const char*’ [-fpermissive]
+  if(err) remove(wav_name);
+                         ^
+In file included from TAP2WAV.C:1:0:
+/usr/include/stdio.h:178:12: note:   initializing argument 1 of ‘int remove(const char*)’
+ extern int remove (const char *__filename) __THROW;
+            ^
+TAP2WAV.C: At global scope:
+TAP2WAV.C:104:41: error: ‘::main’ must return ‘int’
+ void main(int argc,unsigned char *argv[])
+                                         ^
+TAP2WAV.C:104:6: warning: second argument of ‘int main(int, unsigned char**)’ should be ‘char **’ [-Wmain]
+ void main(int argc,unsigned char *argv[])
+      ^
