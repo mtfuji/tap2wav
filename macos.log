@@ -1,4 +1,0 @@
-TAP2WAV.C:47:7: error: use of undeclared identifier 'filelength'
-        flng=filelength(fileno(src));
-             ^
-1 error generated.

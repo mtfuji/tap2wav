@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/stat.h>
 #include <sys/uio.h>
+
+#define ERR_PRINTF_EXIT(...) do { fprintf(stderr, __VA_ARGS__); exit(EXIT_FAILURE); } while(0)
 
 struct WAB_CNK {
 	unsigned char name[4];
@@ -29,6 +32,7 @@ short tap2wav(const char *tap_name,const char *wav_name)
 	unsigned char  bit,dmy;
 	FILE *des;
 	FILE *src;
+	struct stat stbuf;
 
 	err=0;
 	src=des=NULL;
@@ -44,7 +48,11 @@ short tap2wav(const char *tap_name,const char *wav_name)
 
 	//-----
 
-	flng=filelength(fileno(src));
+	if(stat(tap_name, &stbuf) == -1){
+	  ERR_PRINTF_EXIT("cant get file state : %s.\n", tap_name);
+	}
+
+	flng = stbuf.st_size;
 	fread(&freq,1,4,src);
 
 	//-----
