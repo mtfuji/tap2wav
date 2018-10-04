@@ -12,7 +12,7 @@ struct WAB_CNK {
 struct WAB_FMT {
 	unsigned short id;			// フォーマットID
 	unsigned short ch_cnt;	// チャネル数
-	unsigned long	 hz;				// サンプリング周波数
+	unsigned long	 hz;			// サンプリング周波数
 	unsigned long	 spd;			// 平均データ速度
 	unsigned short blk_siz; // ブロックサイズ
 	unsigned short bit_siz; // １サンプル当たりのビット数
@@ -126,9 +126,9 @@ int main(int argc,char *argv[])
 		}
 	}
 	if(src==NULL || des==NULL || err){
-		printf("TAP2WAV (Ver.0.1)\n");
-		printf("	ＴＡＰからＷＡＶへコンバートします\n");
-		printf("	TAP2WAV [元ファイル.TAP] [先ファイル.WAV]\n");
+		printf("tap2wav (Ver.0.2)\n");
+		printf("	tapからwavへコンバートします\n");
+		printf("	tap2wav [元ファイル.tap] [先ファイル.wav]\n");
 		exit(1);
 	}
 
