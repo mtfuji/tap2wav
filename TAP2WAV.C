@@ -4,18 +4,16 @@
 #include <sys/stat.h>
 #include <sys/uio.h>
 
-#define ERR_PRINTF_EXIT(...) do { fprintf(stderr, __VA_ARGS__); exit(EXIT_FAILURE); } while(0)
-
 struct WAB_CNK {
 	unsigned char name[4];
 	unsigned long size;
 } WCNK;
 
 struct WAB_FMT {
-	unsigned short id;      // フォーマットID
-	unsigned short ch_cnt;  // チャネル数
-	unsigned long  hz;      // サンプリング周波数
-	unsigned long  spd;     // 平均データ速度
+	unsigned short id;			// フォーマットID
+	unsigned short ch_cnt;	// チャネル数
+	unsigned long	 hz;				// サンプリング周波数
+	unsigned long	 spd;			// 平均データ速度
 	unsigned short blk_siz; // ブロックサイズ
 	unsigned short bit_siz; // １サンプル当たりのビット数
 	unsigned short headext;	// ?
@@ -29,7 +27,7 @@ short tap2wav(const char *tap_name,const char *wav_name)
 	unsigned long flng,freq;
 	unsigned short siz,lng;
 	unsigned short off,err;
-	unsigned char  bit,dmy;
+	unsigned char	bit,dmy;
 	FILE *des;
 	FILE *src;
 	struct stat stbuf;
@@ -49,7 +47,8 @@ short tap2wav(const char *tap_name,const char *wav_name)
 	//-----
 
 	if(stat(tap_name, &stbuf) == -1){
-	  ERR_PRINTF_EXIT("cant get file state : %s.\n", tap_name);
+		fprintf(stderr, "cant get file state : %s.\n", tap_name);
+		exit(EXIT_FAILURE);
 	}
 
 	flng = stbuf.st_size;
@@ -88,7 +87,7 @@ short tap2wav(const char *tap_name,const char *wav_name)
 
 	while(!err && flng){
 		if(flng>0x800l){ lng=0x800; flng-=0x800l; }
-		else{           lng=(short)flng; flng=0l; }
+		else{ lng=(short)flng; flng=0l; }
 
 		fread(TMP0,1,lng,src); if(ferror(src)){ err=1; break; }
 
@@ -121,18 +120,18 @@ int main(int argc,char *argv[])
 		if(argv[i][0]=='/' || argv[i][0]=='-'){
 			err=1;
 		} else {
-			if(     src==NULL) src=argv[i];
+			if(src==NULL) src=argv[i];
 			else if(des==NULL) des=argv[i];
 			else err=1;
 		}
 	}
 	if(src==NULL || des==NULL || err){
 		printf("TAP2WAV (Ver.0.1)\n");
-		printf("  ＴＡＰからＷＡＶへコンバートします\n");
-		printf("  TAP2WAV [元ファイル.TAP] [先ファイル.WAV]\n");
+		printf("	ＴＡＰからＷＡＶへコンバートします\n");
+		printf("	TAP2WAV [元ファイル.TAP] [先ファイル.WAV]\n");
 		exit(1);
 	}
 
 	if(tap2wav(src,des)) printf("Error!\n");
-	else                 printf("Ok.\n");
+	else								 printf("Ok.\n");
 }
